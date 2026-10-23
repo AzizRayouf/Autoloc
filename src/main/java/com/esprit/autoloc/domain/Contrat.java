@@ -12,4 +12,12 @@ public class Contrat {
     private LocalDate dateSignature;
     private BigDecimal montantTotal;
     private boolean valide;
+
+    // Côté "maître" du OneToOne
+    @OneToOne
+    private Reservation reservation;
+
+    // Cascade = ALL : Supprimer le contrat supprimera ses paiements
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL)
+    private List<Paiement> paiements;
 }

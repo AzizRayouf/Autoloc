@@ -12,4 +12,14 @@ public class Reservation {
     private LocalDate dateFin;
     @Enumerated(EnumType.STRING)
     private StatutReservation statut;
+
+    @ManyToOne
+    private Client client;
+
+    @ManyToOne
+    private Vehicule vehicule;
+
+    // Côté "esclave" du OneToOne (le Contrat possède la clé étrangère)
+    @OneToOne(mappedBy = "reservation")
+    private Contrat contrat;
 }

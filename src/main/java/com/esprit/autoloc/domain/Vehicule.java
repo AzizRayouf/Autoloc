@@ -16,4 +16,16 @@ public class Vehicule {
     private BigDecimal tarifJournalier;
     @Enumerated(EnumType.STRING)
     private StatutVehicule statut;
+
+
+    @ManyToOne
+    private Agence agence;
+
+    @ManyToMany
+    @JoinTable(
+            name = "vehicule_equipement",
+            joinColumns = @JoinColumn(name = "id_vehicule"),
+            inverseJoinColumns = @JoinColumn(name = "id_equipement")
+    )
+    private List<Equipement> equipements;
 }
